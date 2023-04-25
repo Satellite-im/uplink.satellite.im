@@ -330,7 +330,12 @@ section.section-privacy-chat {
     z-index: 1;
     margin-bottom: -40px;
 }
-
+.section-features.desktop {
+    display: block;
+}
+.section-features.mobile {
+    display: none;
+}
 section.section-features {
     position: relative;
     background: #f8f8f8;
@@ -1247,6 +1252,28 @@ body.theme-dark {
 }
 
 @media only screen and (max-width:767px) {
+
+    .section-features.desktop {
+        display: none;
+    }
+    .section-features.mobile {
+        display: block;
+    }
+
+    .section-features.mobile .row {
+        margin: 12px;
+    }
+
+    .section-features.mobile .feature-input {
+        margin-right: 0;
+        padding-top: 20px;
+    }
+
+    .feature-item section {
+        padding-top: 15px;
+        padding-top: 25px;
+    }
+
     header {
         padding: 30px 0;
     }
