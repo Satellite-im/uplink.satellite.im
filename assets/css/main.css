@@ -305,7 +305,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e3440', end
 
 /*section,h1,h2,h3,li,img,.section-features:after{-moz-transition:all .2s linear;-webkit-transition:all .2s linear;}*/
 
+.theme-dark h4, .theme-dark h2 {
+    color: #fff;
+}
 
+.theme-dark .project {
+    border: 2px solid #fff;
+}
 
 @media only screen and (max-width:1450px){
 .container{max-width:1280px;}
@@ -758,7 +764,7 @@ section > .feature-image-container {
     justify-content: center;
     padding: 1.5rem;
     margin: 1rem;
-    border: 2px solid #fff;
+    border: 2px solid #0d0e16;
 }
 
 .project .logo-group {
@@ -775,6 +781,7 @@ section > .feature-image-container {
 .project .note,
 .project .logo-group {
     margin: 1rem;
+    max-width: 60%;
 }
 
 .project h4 {
