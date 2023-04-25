@@ -86,7 +86,7 @@ header .container{    display: flex;
     }
 section.section-privacy-chat{ padding:40px 0;}
 .section-privacy-chat .row{display: flex; flex-wrap: wrap;align-items: center;}
-.section-privacy-chat .left{ float:left; width:40% }
+.section-privacy-chat .left{ float:left; width:30% }
 .section-privacy-chat .page-title{ margin-bottom:20px}
 .section-privacy-chat .page-title .title{ font-size: 62px; font-weight: 700; color: #1a1e2e; letter-spacing:-0.040rem; line-height: 1.4}
 .section-privacy-chat .page-title .title span{ display: block; font-size: 19px; font-weight: 500; color: #31353d; letter-spacing:0.100rem; text-transform: uppercase;}
@@ -101,18 +101,17 @@ section.section-privacy-chat{ padding:40px 0;}
     justify-content: center;
     align-items: center; width:42px; height:42px; border:2px solid #d6d7d8; border-radius:50%; background:#fff; color:#31353d; font-size:18px }
 .section-privacy-chat .social-share li a:hover{background: #205ffa; color: #fff; border-color: #205ffa}
-.section-privacy-chat .right{ float:right; width:60%; padding-left:80px;position: relative;
+.section-privacy-chat .right{ float:right; width:70%; padding-left:80px;position: relative;
     z-index: 1;
     margin-bottom: -40px;}
-.section-privacy-chat .right .image-dark{ display:none; }
 
 section.section-features{ position:relative; background:#f8f8f8; padding:135px 0 75px 0; margin: 40px 0 0 0}
 .section-features:after{ position:absolute; left:0; top:-87px; content:''; width:100%; height:30%; background:#fff url(../images/curve-1.svg) center bottom no-repeat; background-size:100%; }
+
 .section-features .row{display: flex; flex-wrap: wrap;align-items: center;}
 .section-features .left{ float:left; width:60%; padding-right:50px }
-.section-features .left img.image-dark{display: none}
 .section-features .right{ float:right; width:40%;}
-.section-features .container{ max-width:1116px; position:relative; }
+.section-features .container{position:relative; padding-top: 40px; }
 .section-features .container:after{position:absolute; left:-100px; top:0; content:''; width:59px; height:62px; background: url(../images/share-icon.png) center top no-repeat; background-size:contain}
 .section-features .container:before{position:absolute; right:-100px; bottom:0; content:''; width:63px; height:63px; background: url(../images/link-icon.png) center top no-repeat; background-size:contain;}
 .section-features .btnarea{margin:35px 0 0 0}
@@ -231,6 +230,9 @@ footer a{color: #2b2b2b;}
 footer a:hover{color: #205ffa;}
 footer .footsep{padding: 0 20px; opacity:0.3}
 
+.image-light { display: block !important;}
+.image-dark { display: none !important; }
+
 /*dark theme*/
 body.theme-dark{background: #2e3440;color: #dddddd;}
 .theme-dark header .logo,
@@ -251,32 +253,29 @@ body.theme-dark{background: #2e3440;color: #dddddd;}
 .theme-dark .header-right .theme-github a:hover {
     background: #205ffa url(../images/icon-github2.png) center center no-repeat
 }
+
+.theme-dark .image-light { display: none !important;}
+.theme-dark .image-dark { display: block !important; }
+
+
 .theme-dark .section-privacy-chat .page-title .title{color: #fff}
 .theme-dark .section-privacy-chat .page-title .title span{color: #fff}
 .theme-dark .section-privacy-chat .social-share li{color: #fff}
 .theme-dark .section-privacy-chat .social-share li a{background: none;border-color: #434953;color: #fff;}
 .theme-dark .section-privacy-chat .social-share li a:hover{background:#205ffa;border-color: #205ffa}
-.theme-dark .section-privacy-chat .right img.image-light{ display:none; }
-.theme-dark .section-privacy-chat .right img.image-dark{ display:block; }
-.theme-dark .section-features:after{background-image: url(../images/curve-1-dark.svg);background-color: #2e3440; top: -140px}
+.theme-dark .section-features:after{background-image: url(../images/curve-1-dark.svg);background-color: #2e3440;}
 .theme-dark section.section-features{background:#292e39 }
 .theme-dark .page-title .title{ color:#fff }
 .theme-dark .section-features .container:after{background-image:url(../images/share-icon2.png)}
 .theme-dark .section-features .container:before{background-image:url(../images/link-icon2.png)}
-.theme-dark .section-features .left img.image-light{display: none;}
-.theme-dark .section-features .left img.image-dark{display: block;}
 .theme-dark section.section-services{background: #292e39}
 .theme-dark .section-services .colblock .iconbox{background: #303643;box-shadow: rgba(0,0,0,0.11) 0 15px 45px;}
 .theme-dark .section-services .colblock .iconbox img{filter:brightness(100)}
 .theme-dark .section-services h3{color: #fff;}
 .theme-dark section.section-services:after{background-image: url(../images/curve-2-dark.svg);background-color:#2e3440;}
-.theme-dark .section-platform .fullimg .image-light{ display:none;}
-.theme-dark .section-platform .fullimg .image-dark{ display:block;}
 .theme-dark .section-platform .social-share li{color: #fff}
 .theme-dark .section-platform .social-share li a{border-color: #585d66;background: none;color: #fff;}
 .theme-dark .section-platform .social-share li a:hover{background:#205ffa;border-color: #205ffa}
-.theme-dark .section-experience .left .image-light{display:none;}
-.theme-dark .section-experience .left .image-dark{display: block;}
 .theme-dark section.section-experience{/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2e3440+21,292e39+100 */
 background: #2e3440; /* Old browsers */
 background: -moz-linear-gradient(top,  #2e3440 21%, #292e39 100%); /* FF3.6-15 */
@@ -687,8 +686,16 @@ section > .feature-image-container {
 .tabset > input:nth-child(4):checked ~ ul li:nth-child(4),
 .tabset > input:nth-child(5):checked ~ ul li:nth-child(5)
 {
-    border-right: 4px solid var(--main-accent-color);
     border-bottom: 1px solid var(--main-accent-color);
+}
+
+.tabset > input:nth-child(1):not(:checked) ~ ul li:nth-child(1),
+.tabset > input:nth-child(2):not(:checked) ~ ul li:nth-child(2),
+.tabset > input:nth-child(3):not(:checked) ~ ul li:nth-child(3),
+.tabset > input:nth-child(4):not(:checked) ~ ul li:nth-child(4),
+.tabset > input:nth-child(5):not(:checked) ~ ul li:nth-child(5)
+{
+    opacity: .5;
 }
 
 .tabset > div > section {
@@ -842,3 +849,20 @@ section > .feature-image-container {
 /* .project button:hover>a {
     color: #000;
 } */
+
+.feature-images {
+    /* height: 100%; */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-input {
+    margin-right: 40px;
+}
+
+li.feature-item:not(:last-child) { 
+    margin-bottom: 20px;  
+ }
