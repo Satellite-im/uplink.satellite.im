@@ -11,3 +11,7 @@ jQuery(function ($) {
 $(".header-right .theme-triggle a").click(function(){
   $("body").toggleClass("theme-dark");
 });
+
+if(window.matchMedia("(prefers-color-scheme: dark)").matches == true) {
+  $("body").toggleClass("theme-dark");
+}
