@@ -389,7 +389,6 @@ section.section-features {
 
 .section-features .container:before {
     position: absolute;
-    right: -100px;
     bottom: 0;
     content: '';
     width: 63px;
