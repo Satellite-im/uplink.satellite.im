@@ -387,7 +387,7 @@ section.section-features {
     background-size: contain
 }
 
-.section-features .container:before {
+/* .section-features .container:before {
     position: absolute;
     bottom: 0;
     content: '';
@@ -395,7 +395,7 @@ section.section-features {
     height: 63px;
     background: url(../images/link-icon.png) center top no-repeat;
     background-size: contain;
-}
+} */
 
 .section-features .btnarea {
     margin: 35px 0 0 0
@@ -897,9 +897,9 @@ body.theme-dark {
     background-image: url(../images/share-icon2.png)
 }
 
-.theme-dark .section-features .container:before {
+/* .theme-dark .section-features .container:before {
     background-image: url(../images/link-icon2.png)
-}
+} */
 
 .theme-dark section.section-services {
     background: #292e39
