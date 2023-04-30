@@ -1760,6 +1760,7 @@ section > .feature-image-container {
 .project .note {
     text-align: left;
     flex-grow: 1;
+    word-wrap:break-word;
 }
 
 .project .button,
