@@ -1,2 +1,2 @@
 # uplink.satellite.im
-uplink marketing page
+Uplink marketing page
