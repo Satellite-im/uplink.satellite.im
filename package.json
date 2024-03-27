@@ -1,0 +1,22 @@
+{
+  "name": "uplink.satellite.im",
+  "version": "1.0.0",
+  "description": "uplink marketing website",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satellite-im/uplink.satellite.im.git"
+  },
+  "author": "Satellite.IM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Satellite-im/uplink.satellite.im/issues"
+  },
+  "homepage": "https://github.com/Satellite-im/uplink.satellite.im#readme"
+}
