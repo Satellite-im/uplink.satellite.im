@@ -12,6 +12,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Set up Git repository origin
+      - name: Set up Git repository origin
+        run: git remote add origin https://github.com/${{ github.repository }}.git
+
       - name: Get Latest Commit Hash (Before Deployment)
         id: get-before-commit-hash
         run: |
