@@ -20,32 +20,9 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
 
-      - name: Fetch Page Source
-        run: |
-          page_source=$(curl -sL https://github.com/Satellite-im/uplink.satellite.im/settings/pages)
-          echo "$page_source" > page_source.html
-          cat page_source.html  # Output page source to verify
-        shell: bash
-
-      - name: Check for "Your site is live"
-        run: |
-          timeout=60  # Maximum waiting time in seconds
-          interval=10  # Time interval for checking in seconds
-          end=$((SECONDS+timeout))
-          while [ $SECONDS -lt $end ]; do
-            if grep -q "Your site is live" page_source.html; then
-              echo "Deployment successful!"
-              break
-            else
-              echo "Deployment not yet complete."
-              sleep $interval
-            fi
-          done
-        shell: bash
-
       - name: Comment on PR
         if: success()
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-            Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/).
+            Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/) Wait 30s and refresh the page if you don't get the new content.
