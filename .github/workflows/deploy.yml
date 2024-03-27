@@ -9,6 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Deploy to GitHub Pages
+        id: gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+
       - name: Fetch Page Source
         run: |
           page_source=$(curl -sL https://github.com/Satellite-im/uplink.satellite.im/settings/pages)
@@ -17,7 +28,7 @@ jobs:
 
       - name: Check for "Your site is live"
         run: |
-          timeout=300  # Maximum waiting time in seconds
+          timeout=60  # Maximum waiting time in seconds
           interval=10  # Time interval for checking in seconds
           end=$((SECONDS+timeout))
           while [ $SECONDS -lt $end ]; do
