@@ -1,11 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy PR to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
-      
   pull_request:
+    types: [opened, synchronize, reopened]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,5 +16,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: ${{ github.ref }}
+          publish_dir: .
+          publish_branch: gh-pages
