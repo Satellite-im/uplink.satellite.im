@@ -24,6 +24,7 @@ jobs:
         run: |
           page_source=$(curl -sL https://github.com/Satellite-im/uplink.satellite.im/settings/pages)
           echo "$page_source" > page_source.html
+          cat page_source.html  # Output page source to verify
         shell: bash
 
       - name: Check for "Your site is live"
