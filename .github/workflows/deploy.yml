@@ -11,17 +11,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-      # Set up Git repository origin
-      - name: Set up Git repository origin
-        run: git remote add origin https://github.com/${{ github.repository }}.git
-
-      - name: Get Latest Commit Hash (Before Deployment)
-        id: get-before-commit-hash
-        run: |
-          BEFORE_COMMIT_HASH=$(git ls-remote origin gh-pages | cut -f1)
-          echo "::set-output name=before_commit_hash::$BEFORE_COMMIT_HASH"
-
+        
       - name: Deploy to GitHub Pages
         id: gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -30,11 +20,22 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
 
-      - name: Get Latest Commit Hash (After Deployment)
-        id: get-after-commit-hash
+      - name: Check GitHub Pages status
+        id: check-pages-status
         run: |
-          AFTER_COMMIT_HASH=$(git ls-remote origin gh-pages | cut -f1)
-          echo "::set-output name=after_commit_hash::$AFTER_COMMIT_HASH"
+          timeout=300  # Maximum waiting time in seconds
+          interval=10  # Time interval for checking in seconds
+          end=$((SECONDS+timeout))
+          status=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/Satellite-im/uplink.satellite.im/pages)
+          if echo "$status" | jq -e '.message' > /dev/null; then
+            if echo "$status" | jq -e '.message' | grep -q "Your site is live"; then
+              echo "::set-output name=pages_deployed::true"
+            else
+              echo "::set-output name=pages_deployed::false"
+            fi
+          else
+            echo "::set-output name=pages_deployed::false"
+          fi
 
       - name: Comment on PR
         if: success()
