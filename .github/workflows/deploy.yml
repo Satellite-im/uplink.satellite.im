@@ -1,48 +1,35 @@
-name: Deploy PR to GitHub Pages
+name: Check GitHub Pages Status
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  deploy:
+  check_pages_status:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        
-      - name: Deploy to GitHub Pages
-        id: gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          publish_branch: gh-pages
+      - name: Fetch Page Source
+        run: |
+          page_source=$(curl -sL https://github.com/Satellite-im/uplink.satellite.im/settings/pages)
+          echo "$page_source" > page_source.html
+        shell: bash
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install puppeteer
-
-      - name: Check GitHub Pages status
-        id: check-pages-status
+      - name: Check for "Your site is live"
         run: |
           timeout=300  # Maximum waiting time in seconds
           interval=10  # Time interval for checking in seconds
           end=$((SECONDS+timeout))
           while [ $SECONDS -lt $end ]; do
-            if curl -s -o /dev/null -w "%{http_code}" https://github.com/Satellite-im/uplink.satellite.im/settings/pages | grep -q "200"; then
-              if npm run puppeteer-check; then
-                echo "::set-output name=pages_deployed::true"
-                break
-              fi
+            if grep -q "Your site is live" page_source.html; then
+              echo "Deployment successful!"
+              break
+            else
+              echo "Deployment not yet complete."
+              sleep $interval
             fi
-            sleep $interval
           done
+        shell: bash
 
       - name: Comment on PR
         if: success()
