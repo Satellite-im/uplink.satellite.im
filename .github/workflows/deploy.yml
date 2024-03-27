@@ -20,22 +20,29 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install puppeteer
+
       - name: Check GitHub Pages status
         id: check-pages-status
         run: |
           timeout=300  # Maximum waiting time in seconds
           interval=10  # Time interval for checking in seconds
           end=$((SECONDS+timeout))
-          status=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/Satellite-im/uplink.satellite.im/pages)
-          if echo "$status" | jq -e '.message' > /dev/null; then
-            if echo "$status" | jq -e '.message' | grep -q "Your site is live"; then
-              echo "::set-output name=pages_deployed::true"
-            else
-              echo "::set-output name=pages_deployed::false"
+          while [ $SECONDS -lt $end ]; do
+            if curl -s -o /dev/null -w "%{http_code}" https://github.com/Satellite-im/uplink.satellite.im/settings/pages | grep -q "200"; then
+              if npm run puppeteer-check; then
+                echo "::set-output name=pages_deployed::true"
+                break
+              fi
             fi
-          else
-            echo "::set-output name=pages_deployed::false"
-          fi
+            sleep $interval
+          done
 
       - name: Comment on PR
         if: success()
