@@ -22,16 +22,7 @@ jobs:
 
       - name: Add Comment on Successful Deployment
         if: ${{ success() }}
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { context, github } = require('@actions/github');
-
-            const comment = `Deployment successful! You can view the changes here: https://<USERNAME>.github.io/<REPO>`;
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            })
+        run: |
+          curl -H "Authorization: token $GITHUB_TOKEN" -X POST \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments" \
+          -d '{"body": "Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/)." }'
