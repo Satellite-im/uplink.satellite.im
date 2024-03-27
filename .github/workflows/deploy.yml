@@ -17,10 +17,7 @@ jobs:
       - name: Install Dependencies and Build 🔧
         run: |
           npm install http-server --save-dev  # Install http-server for deployment
-          npm run build  # Build your project
-
-      - name: Start HTTP server
-        run: npx http-server -p 8080 ./build &  # Start http-server to serve your build artifacts
+          npx http-server -p 8080 ./build &  # Start http-server to serve your build artifacts
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
