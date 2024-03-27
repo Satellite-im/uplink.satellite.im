@@ -20,9 +20,27 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
 
-      - name: Add Comment on Successful Deployment
+      - name: Check if Comment Exists
+        id: check-comment
+        run: |
+          COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments")
+          if echo "$COMMENTS" | jq -e '.[] | select(.body | contains("GitHub Pages"))' >/dev/null; then
+            echo "::set-output name=comment_id::$(echo "$COMMENTS" | jq -r '.[] | select(.body | contains("GitHub Pages")) | .id')"
+          else
+            echo "::set-output name=comment_id::null"
+          fi
+
+      - name: Update or Add Comment on Successful Deployment
         if: ${{ success() }}
         run: |
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST \
-          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments" \
-          -d '{"body": "Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/)." }'
+          COMMENT_ID="${{ steps.check-comment.outputs.comment_id }}"
+          if [ "$COMMENT_ID" != "null" ]; then
+            curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X PATCH \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" \
+              -d '{"body": "Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/)." }'
+          else
+            curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments" \
+              -d '{"body": "Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/)." }'
+          fi
