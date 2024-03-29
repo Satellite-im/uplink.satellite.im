@@ -1,0 +1,28 @@
+name: Check GitHub Pages Status
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check_pages_status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Deploy to GitHub Pages
+        id: gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+
+      - name: Comment on PR
+        if: success()
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/). Can take up to 30 seconds for the new content to display.
