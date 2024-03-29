@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root{
+:root {
   --main-accent-color: #205ffa;
   --main-accent-color-hover: #194dc7;
 }
@@ -40,6 +40,7 @@ a {
   -moz-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   text-decoration: none;
+  display: inline-table;
 }
 
 a:hover,
@@ -1514,10 +1515,6 @@ body.theme-dark {
     bottom: -40px;
     height: 65px;
   }
-  .project{
-
-
-  }
 }
 
 .features-container {
@@ -1871,7 +1868,7 @@ button {
   font-family: "Poppins", sans-serif;
   border-radius: 5rem;
   padding: .75rem 1.25rem;
-  margin: 10px 0px 10px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .project button{
