@@ -8,8 +8,13 @@ jQuery(function ($) {
   });
 });
 
-$(".header-right .theme-triggle a").click(function(){
-  $("body").toggleClass("theme-dark");
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  document.body.classList.toggle('theme-dark'); // Toggles the dark theme on body
+
+  // Toggle icon visibility
+  document.getElementById('dark-icon').style.display = document.body.classList.contains('theme-dark') ? 'none' : 'block';  
+  document.getElementById('light-icon').style.display = document.body.classList.contains('theme-dark') ? 'block' : 'none';
+
 });
 
 if(window.matchMedia("(prefers-color-scheme: dark)").matches == true) {
