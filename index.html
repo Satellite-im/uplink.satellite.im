@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://kit.fontawesome.com/05d4add442.js" crossorigin="anonymous"></script>
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Satellite_im-">
@@ -12,6 +13,11 @@
   <meta name="twitter:description" content=" Satellite is creating the future of secure p2p communications with their customizable and open source chat-app, Uplink.">
   <meta name="twitter:image" content="https://github.com/Satellite-im/uplink.satellite.im/blob/main/assets/images/UplinkAlphaCampaign2.png?raw=true">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
   <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon" />
   <link rel='stylesheet' href='assets/css/main.css' type='text/css' media='all' />
   <title>Uplink</title>
@@ -27,8 +33,17 @@
         </span>
       </div>
       <div class="header-right">
-        <div class="theme-triggle"><a href="javascript:;">&nbsp;</a></div>
-        <div class="theme-github"><a href="https://github.com/satellite-im" target="_blank">&nbsp;</a></div>
+        <button class="theme-toggle" id="theme-toggle">
+          <i class="fas fa-moon icon" id="dark-icon" style="display: none;"></i> <!-- Dark theme icon -->
+          <i class="fas fa-sun icon" id="light-icon"></i> <!-- Light theme icon -->
+
+        </button>
+        <a href="https://github.com/satellite-im">
+        <button class="theme-github">
+          <i class="fa-brands fa-github icon" id="dark-icon"></i> <!-- Dark theme icon -->
+        </button>
+        </a>
+      
         <div class="theme-downloads"><a href="#downloads"><button class="download">Download&nbsp;</button></a></div>
       </div>
     </div>
@@ -47,9 +62,11 @@
         <div class="left">
           <p class="title-description">Have the chat experience you deserve without sacrificing privacy.</p>
           <p class="title-description">With <b>Uplink</b>, you control your data and own your own key.</p>
-          <a href="https://satelliteim.eo.page/signup" class="no-underline button" target="_blank">
-            <button class="home">Join Our Mailing List</button>
-            <a href="#downloads"><button class="home">Download&nbsp;</button></a>
+          <a href="https://satelliteim.eo.page/signup" class="no-underline home" target="_blank">
+            <button>Join Our Mailing List</button>
+          </a>
+          <a href="#downloads" class="no-underline home">
+              <button>Download&nbsp;</button>
           </a>
         </div>
         <div class="right">
@@ -233,7 +250,7 @@
           </div>
         </div>
         <div class="colblock">
-          <div class="boxinner clearfix">
+          <div class="boxinner clearfixs">
             <div class="iconbox">
               <i class="fa-solid fa-users-rectangle"></i>
             </div>
@@ -395,7 +412,7 @@
   <footer>
     <div class="container text-center">
       <div class="logo"><a href="#">Uplink</a></div>
-      <ul class="social-share clearfix">
+      <ul class="link-buttons clearfix">
         <li><a href="https://discord.gg/satellite" target="_blank"><i class="fa-brands fa-discord"></i></a></li>
         <li><a href="https://twitter.com/Satellite_im" target="_blank"><i class="fa-brands fa-twitter"></i></i></a></li>
       </ul>
