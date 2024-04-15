@@ -70,7 +70,7 @@ ul {
   list-style: none;
 }
 
-ul li {
+.section-tos ul li {
   margin-bottom: 0.5rem;
   padding: 0;
   list-style: outside;
@@ -81,8 +81,13 @@ li p {
 }
 
 li {
+  margin-left: 0rem;
+}
+
+.section-tos li {
   margin-left: 2rem;
 }
+
 
 
 .container {
