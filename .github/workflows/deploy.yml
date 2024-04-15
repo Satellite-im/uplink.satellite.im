@@ -1,8 +1,6 @@
 name: Check GitHub Pages Status
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+on: [pull_request]
 
 jobs:
   check_pages_status:
