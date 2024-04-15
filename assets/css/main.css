@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Micro+5&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   --main-accent-color: #205ffa;
@@ -69,11 +70,25 @@ ul {
   list-style: none;
 }
 
-ul li {
-  margin: 0;
+.section-tos ul li {
+  margin-bottom: 0.5rem;
   padding: 0;
-  list-style: none;
+  list-style: outside;
 }
+
+li p {
+  margin-bottom: 0.5rem;
+}
+
+li {
+  margin-left: 0rem;
+}
+
+.section-tos li {
+  margin-left: 2rem;
+}
+
+
 
 .container {
   max-width: 1372px;
@@ -282,6 +297,10 @@ header .container {
   letter-spacing: 0;
 }
 
+.order-rights {
+  padding-left: 1rem;
+}
+
 section.section-privacy-chat {
   padding: 40px 0;
 }
@@ -371,6 +390,147 @@ section.section-privacy-chat {
   z-index: 1;
   margin-bottom: -40px;
 }
+
+section.section-tos {
+  padding: 8rem 0;
+}
+
+.section-tos .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section-tos .page-title {
+  margin-bottom: 2rem;
+}
+
+.section-tos .page-title .title {
+  font-family: "Space Mono", monospace;  font-size: 62px;
+  font-weight: 700;
+  color: #1a1e2e;
+  letter-spacing: -0.04rem;
+  line-height: 1.4;
+}
+
+.section-tos .page-title .title span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #31353d;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.section-tos p {
+  max-width: auto;
+  padding-left: 2rem;
+  padding-bottom: .25rem;
+}
+
+.section-tos h1 {
+  font-family: "Space Mono", monospace;
+  max-width: auto;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.section-tos h2 {
+  font-family: "Space Mono", monospace;
+  max-width: auto;
+  padding-bottom: 1rem;
+}
+
+.theme-dark .section-tos h1 {
+  font-family: "Space Mono", monospace;
+  max-width: auto;
+  color: #ffffff;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.theme-dark .section-tos h2 {
+  font-family: "Space Mono", monospace;
+  max-width: auto;
+  color: #ffffff;
+  padding-bottom: 1rem;
+}
+
+.section-tos ul {
+  max-width: auto;
+  padding-left: 2.5rem;
+  padding-bottom: .5rem;
+}
+
+.section-tos h3 {
+  max-width: auto;
+  padding-left: 1rem;
+  padding-bottom: .5rem;
+}
+
+.section-tos h4 {
+  max-width: auto;
+  padding-left: 2rem;
+  padding-bottom: .5rem;
+}
+
+.theme-dark .section-tos h3 {
+  max-width: auto;
+  color: #ffffff;
+  padding-left: 1rem;
+  padding-bottom: .5rem;
+}
+
+.section-tos .link-buttons {
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section-tos .link-buttons li {
+  font-size: 19px;
+  font-weight: 600;
+  color: #31353d;
+  letter-spacing: 0;
+  float: left;
+  margin-right: 5px;
+}
+
+.section-tos .link-buttons li:last-child {
+  margin-right: 0;
+}
+
+.section-tos .link-buttons li a {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #d6d7d8;
+  border-radius: 50%;
+  background: #fff;
+  color: #31353d;
+  font-size: 18px;
+}
+
+.section-tos .link-buttons li a:hover {
+  background: var(--main-accent-color);
+  color: #fff;
+  border-color: var(--main-accent-color);
+}
+
+.section-tos .right {
+  float: right;
+  width: 70%;
+  padding-left: 80px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -40px;
+}
+
 .section-features.desktop {
   display: block;
 }
@@ -427,6 +587,15 @@ section.section-features {
   background: url(../images/share-icon.png) center top no-repeat;
   background-size: contain;
 }
+
+.section-tos .container {
+  position: relative;
+  padding-top: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: auto;
+}
+
 
 /* .section-features .container:before {
     position: absolute;
@@ -818,7 +987,7 @@ footer .link-buttons li a:hover {
 footer .copy {
   margin: 55px auto 0 auto;
   padding: 40px 0;
-  max-width: 660px;
+  max-width: auto;
   border-top: 1px solid #d3d3d3;
   font-size: 14px;
   font-weight: 400;
@@ -859,7 +1028,7 @@ footer .footsep {
 
 /*dark theme*/
 body.theme-dark {
-  background: #2e3440;
+  background: #0D0E16;
   color: #dddddd;
 }
 
@@ -922,13 +1091,36 @@ body.theme-dark {
   border-color: var(--main-accent-color);
 }
 
+.theme-dark .section-tos .page-title .title {
+  color: #fff;
+}
+
+.theme-dark .section-tos .page-title .title span {
+  color: #fff;
+}
+
+.theme-dark .section-tos .link-buttons li {
+  color: #fff;
+}
+
+.theme-dark .section-tos .link-buttons li a {
+  background: none;
+  border-color: #434953;
+  color: #fff;
+}
+
+.theme-dark .section-tos .link-buttons li a:hover {
+  background: var(--main-accent-color);
+  border-color: var(--main-accent-color);
+}
+
 .theme-dark .section-features:after {
   background-image: url(../images/curve-1-dark.svg);
-  background-color: #2e3440;
+  background-color: #0D0E16;
 }
 
 .theme-dark section.section-features {
-  background: #292e39;
+  background: #1A1E2E;
 }
 
 .theme-dark .page-title .title {
@@ -944,11 +1136,11 @@ body.theme-dark {
 } */
 
 .theme-dark section.section-services {
-  background: #292e39;
+  background: #1A1E2E;
 }
 
 .theme-dark .section-services .colblock .iconbox {
-  background: #303643;
+  background: #31353D;
   box-shadow: rgba(0, 0, 0, 0.11) 0 15px 45px;
 }
 
@@ -962,7 +1154,7 @@ body.theme-dark {
 
 .theme-dark section.section-services:after {
   background-image: url(../images/curve-2-dark.svg);
-  background-color: #2e3440;
+  background-color: #232838;
 }
 
 .theme-dark .section-platform .link-buttons li {
@@ -981,22 +1173,13 @@ body.theme-dark {
 }
 
 .theme-dark section.section-experience {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2e3440+21,292e39+100 */
-  background: #2e3440;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #2e3440 21%, #292e39 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #2e3440 21%, #292e39 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #2e3440 21%, #292e39 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e3440', endColorstr='#292e39', GradientType=0);
-  /* IE6-9 */
+  background: #232838;
+
 }
 
 .theme-dark section.section-experience:after {
   background-image: url(../images/curve-3-dark.svg);
-  background-color: #2e3440;
+  background-color: #0D0E16;
 }
 
 .theme-dark .accordion-container .accordion-title {
@@ -1023,7 +1206,7 @@ body.theme-dark {
 }
 
 .theme-dark footer {
-  background: #292e39;
+  background: #1A1E2E;
 }
 
 .theme-dark footer:after {
@@ -1099,6 +1282,9 @@ body.theme-dark {
     font-size: 56px;
   }
 
+   .section-tos .page-title .title {
+    font-size: 56px;
+  }
   .page-title .title {
     font-size: 50px;
   }
@@ -1126,6 +1312,14 @@ body.theme-dark {
   }
 
   .section-privacy-chat .page-title .title span {
+    font-size: 17px;
+  }
+
+  .section-tos .page-title .title {
+    font-size: 52px;
+  }
+
+  .section-tos .page-title .title span {
     font-size: 17px;
   }
 
@@ -1172,6 +1366,14 @@ body.theme-dark {
   }
 
   .section-privacy-chat .page-title .title span {
+    font-size: 15px;
+  }
+
+  .section-tos .page-title .title {
+    font-size: 40px;
+  }
+
+  .section-tos .page-title .title span {
     font-size: 15px;
   }
 
@@ -1248,6 +1450,14 @@ body.theme-dark {
   }
 
   .section-privacy-chat .page-title .title span {
+    font-size: 13px;
+  }
+
+  .section-tos .page-title .title {
+    font-size: 33px;
+  }
+
+  .section-tos .page-title .title span {
     font-size: 13px;
   }
 
@@ -1332,6 +1542,13 @@ body.theme-dark {
     margin: 15px 0 0 0;
   }
 
+  .section-tos {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20rem;
+  }
+
+
   section.section-features {
     padding: 45px 0 25px 0;
     margin: -10px 0 0 0;
@@ -1372,6 +1589,14 @@ body.theme-dark {
   }
 
   .section-privacy-chat .link-buttons {
+    justify-content: center;
+  }
+
+  .section-tos .page-title .title {
+    font-size: 30px;
+  }
+
+  .section-tos .link-buttons {
     justify-content: center;
   }
 
@@ -1498,6 +1723,16 @@ body.theme-dark {
   }
 
   .section-privacy-chat .link-buttons li a {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .section-tos .link-buttons li {
+    font-size: 17px;
+  }
+
+  .section-tos .link-buttons li a {
     width: 36px;
     height: 36px;
     font-size: 16px;
