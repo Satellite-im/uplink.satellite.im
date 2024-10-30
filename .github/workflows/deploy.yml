@@ -12,7 +12,7 @@ jobs:
         
       - name: Deploy to GitHub Pages
         id: gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
@@ -20,7 +20,7 @@ jobs:
 
       - name: Comment on PR
         if: success()
-        uses: mshick/add-pr-comment@v2
+        uses: mshick/add-pr-comment@v2.8.2
         with:
           message: |
             Congrats, your changes have been deployed to GitHub Pages! You can view the deployment [here](https://satellite-im.github.io/uplink.satellite.im/). Can take up to 30 seconds for the new content to display.
